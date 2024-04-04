@@ -38,12 +38,10 @@ const actor = {
 // }
 // console.log("getEntries(actor:", getEntries(actor));
 
-function getEntries(obj) {
-  const arr = Object.keys(obj).map((keys) => {
-    return [keys, obj[keys]];
-  });
-  return arr;
-}
+const getEntries = (obj) => {
+  return Object.entries(obj).map(([key, value]) => [key, value]);
+};
+
 console.log("getEntries(actor):", getEntries(actor));
 
 // ------------------------------task-3---------------------------- //
