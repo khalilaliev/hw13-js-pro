@@ -29,17 +29,12 @@ const actor = {
   lastFilm: "Venom: Let There Be Carnage",
 };
 
-// function getEntries(obj) {
-//   const entries = [];
-//   Object.keys(obj).forEach((element) => {
-//     entries.push([element, obj[element]]);
-//   });
-//   return entries;
-// }
-// console.log("getEntries(actor:", getEntries(actor));
-
 const getEntries = (obj) => {
-  return Object.entries(obj).map(([key, value]) => [key, value]);
+  const entries = [];
+  Object.keys(obj).map((keys) => {
+    return entries.push([keys, obj[keys]]);
+  });
+  return entries;
 };
 
 console.log("getEntries(actor):", getEntries(actor));
@@ -96,21 +91,17 @@ for (const key in celebrity) {
 
 // ------------------------------task-4---------------------------- //
 
-class Animal {
-  constructor(voice) {
-    this.voice = voice;
-    Object.defineProperty(this, "voice", {
-      enumerable: false,
-    });
-  }
-  say() {
-    return this.voice;
-  }
+function Animal(voice) {
+  this.voice = voice;
 }
-
+Animal.prototype.say = function () {
+  return this.voice;
+};
 const dog = new Animal("Guv!");
 console.log(dog.say());
-
+Object.defineProperty(Animal.prototype, "say", {
+  enumerable: false,
+});
 for (const key in dog) {
   console.log(key);
 }
